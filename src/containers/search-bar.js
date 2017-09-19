@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {connect } from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {fetchWeather} from '../actions/index';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchWeather } from '../actions/index';
 
 export class SearchBar extends Component {
     constructor(props) {
@@ -13,18 +13,18 @@ export class SearchBar extends Component {
     }
 
     onInputChange(event) {
-        console.log(event.target.value);
         this.setState({
             term: event.target.value
         });
     }
 
-    onFormSubmit(event){
+    onFormSubmit(event) {
         event.preventDefault();
 
         //getdata 
+        console.log("Form submitted");
         this.props.fetchWeather(this.state.term);
-        this.setState({term: ''});
+        this.setState({ term: '' });
     }
 
     render() {
@@ -46,8 +46,8 @@ export class SearchBar extends Component {
 
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({fetchWeather}, dispatch);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ fetchWeather }, dispatch);
 };
 
 // null here means that in this containerv we dont care about redux state
